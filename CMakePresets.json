@@ -1,0 +1,501 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base-build-folders",
+      "hidden": true,
+      "description": "Set the build and install directory.",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "cacheVariables": {
+        "FATAL_WARNINGS": "ON",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}"
+      }
+    },
+    {
+      "name": "generator-ninja",
+      "hidden": true,
+      "description": "Set ninja as makefile generator",
+      "generator": "Ninja Multi-Config",
+      "cacheVariables": {
+        "CMAKE_MAKE_PROGRAM": "E://tools//ninja//ninja.exe",
+        "CMAKE_VERBOSE_MAKEFILE": "ON"
+      }
+    },
+    {
+      "name": "windows-generator-msvc",
+      "hidden": true,
+      "description": "On Windows use MSVC 2022 VC17 as compiler and generator. Set x64 architecture and v143 toolset.",
+      "generator": "Visual Studio 17 2022",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "toolset": {
+        "value": "v143,host=x64,version=14.32.31326",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "hostOS": [
+            "Windows"
+          ],
+          "intelliSenseMode": "windows-msvc-x64"
+        }
+      },
+      "inherits": [
+        "base-build-folders"
+      ]
+    },
+    {
+      "name": "windows-generator-ninja",
+      "hidden": true,
+      "description": "On Windows use Ninja as generator and MSVC 2022 VC17 as compiler. Set x64 architecture and toolset.",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "toolset": {
+        "value": "v143,host=x64,version=14.32.31326",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "hostOS": [
+            "Windows"
+          ],
+          "intelliSenseMode": "windows-msvc-x64"
+        }
+      },
+      "inherits": [
+        "base-build-folders",
+        "generator-ninja"
+      ]
+    },
+    {
+      "name": "windows-clang-cl",
+      "hidden": true,
+      "description": "Use Clang-CL (MSVC) as compiler on Windows. Use ninja as generator.",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang-cl",
+        "CMAKE_CXX_COMPILER": "clang-cl"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "hostOS": [
+            "Windows"
+          ],
+          "intelliSenseMode": "windows-clang-x64",
+          "enableMicrosoftCodeAnalysis": true
+        }
+      },
+      "inherits": [
+        "windows-generator-ninja"
+      ]
+    },
+    {
+      "name": "windows-clang",
+      "hidden": true,
+      "description": "Use Clang (LLVM) as compiler on Windows. Use ninja as generator.",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "intelliSenseMode": "windows-clang-x64"
+        }
+      },
+      "inherits": [
+        "windows-generator-ninja"
+      ]
+    },
+    {
+      "name": "linux-generator-makefiles",
+      "hidden": true,
+      "description": "On Linux use Unix Makefiles as generator.",
+      "generator": "Unix Makefiles",
+      "inherits": [
+        "base-build-folders"
+      ]
+    },
+    {
+      "name": "linux-generator-ninja",
+      "hidden": true,
+      "description": "On Linux use Ninja as generator and set x64 architecture.",
+      "generator": "Ninja",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl",
+        "CMAKE_MAKE_PROGRAM": "/usr/bin/ninja"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "hostOS": [
+            "Linux"
+          ]
+        }
+      },
+      "inherits": [
+        "base-build-folders"
+      ]
+    },
+    {
+      "name": "linux-clang",
+      "hidden": true,
+      "description": "Use Clang as compiler on Linux. Use ninja as generator.",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "intelliSenseMode": "windows-clang-x64"
+        }
+      },
+      "inherits": [
+        "linux-generator-ninja"
+      ]
+    },
+    {
+      "name": "linux-gcc",
+      "hidden": true,
+      "description": "Use GCC as compiler on Linux. With ninja as generator.",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "intelliSenseMode": "windows-clang-x64"
+        }
+      },
+      "inherits": [
+        "linux-generator-ninja"
+      ]
+    },
+    {
+      "name": "cmake",
+      "hidden": true,
+      "description": "CMake Configuration",
+      "cacheVariables": {
+        "CMAKE_VERBOSE_MAKEFILE": {
+          "type": "STRING",
+          "value": "ON"
+        }
+      }
+    },
+    {
+      "name": "vcpkg-x64-windows-static",
+      "hidden": true,
+      "description": "vcpkg: setup env, toolchain and target_triplet (non-shared | static).",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": {
+          "type": "FILEPATH",
+          "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+        },
+        "BUILD_SHARED_LIBS": {
+          "type": "STRING",
+          "value": "OFF"
+        },
+        "VCPKG_TARGET_TRIPLET": {
+          "type": "STRING",
+          "value": "x64-windows-static"
+        }
+      },
+      "environment": {
+        "VCPKG_FEATURE_FLAGS": "manifests,versions,binarycaching,registries"
+      }
+    },
+    {
+      "name": "vcpkg-x64-linux-static",
+      "hidden": true,
+      "description": "vcpkg: setup env, toolchain and target_triplet (non-shared | static).",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": {
+          "type": "FILEPATH",
+          "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+        },
+        "BUILD_SHARED_LIBS": {
+          "type": "STRING",
+          "value": "OFF"
+        },
+        "VCPKG_TARGET_TRIPLET": {
+          "type": "STRING",
+          "value": "x64-linux-static"
+        }
+      },
+      "environment": {
+        "VCPKG_FEATURE_FLAGS": "manifests,versions,binarycaching,registries"
+      }
+    },
+    {
+      "name": "Address-Sanitizer",
+      "hidden": true,
+      "cacheVariables": {
+        "SANITIZE_ADDRESS": "ON"
+      }
+    },
+    {
+      "name": "Thread-Sanitizer",
+      "hidden": true,
+      "cacheVariables": {
+        "SANITIZE_THREAD": "ON"
+      }
+    },
+    {
+      "name": "Undefined-Behavior-Sanitizer",
+      "hidden": true,
+      "cacheVariables": {
+        "SANITIZE_UB": "ON"
+      }
+    },
+    {
+      "name": "Static-Analysis",
+      "hidden": true,
+      "cacheVariables": {
+        "STATIC_ANALYSIS": "ON"
+      }
+    },
+    {
+      "name": "Windows-VC16-x64",
+      "description": "Target Windows using MSVC 2019, VC16 (msvc_x64_x64), static, CMake, vcpkg.",
+      "generator": "Visual Studio 16 2019",
+      "inherits": [
+        "windows-generator-msvc",
+        "vcpkg-x64-windows-static",
+        "cmake"
+      ]
+    },
+    {
+      "name": "Windows-VC17-x64",
+      "description": "Target Windows using MSVC 2022, VC17 (msvc_x64_x64), static, CMake, vcpkg.",
+      "inherits": [
+        "windows-generator-msvc",
+        "vcpkg-x64-windows-static",
+        "cmake"
+      ]
+    },
+    {
+      "name": "Windows-VC17-x64-ninja",
+      "description": "Target Windows using Ninja, VC17 (msvc_x64_x64), static, CMake, vcpkg.",
+      "inherits": [
+        "windows-generator-ninja",
+        "vcpkg-x64-windows-static",
+        "cmake"
+      ]
+    },
+    {
+      "name": "Windows-VC17-x64-Analysis",
+      "hidden": true,
+      "cacheVariables": {
+        "TT_ENABLE_ANALYSIS": {
+          "type": "STRING",
+          "value": "ON"
+        }
+      },
+      "inherits": [
+        "Windows-VC17-x64"
+      ]
+    },
+    {
+      "name": "Windows-VC17-x64-PCH-off",
+      "hidden": true,
+      "description": "Target Windows using MSVC 2022, VC17 (msvc_x64_x64), static, CMake, vcpkg, PCH=OFF.",
+      "cacheVariables": {
+        "TT_BUILD_PCH": {
+          "type": "STRING",
+          "value": "OFF"
+        }
+      },
+      "inherits": [
+        "Windows-VC17-x64"
+      ]
+    },
+    {
+      "name": "Windows-ClangCl-x64",
+      "description": "Target Windows using MSVC 2022, Clang-CL (clang_cl_x64), static, CMake, vcpkg.",
+      "generator": "Visual Studio 17 2022",
+      "toolset": "host=x64",
+      "inherits": [
+        "windows-clang-cl",
+        "vcpkg-x64-windows-static",
+        "cmake"
+      ]
+    },
+    {
+      "name": "Windows-Clang-x64",
+      "description": "Target Windows using LLVM 14, Clang (clang_x64), static, CMake, vcpkg.",
+      "generator": "Visual Studio 17 2022",
+      "toolset": "host=x64",
+      "inherits": [
+        "windows-generator-ninja",
+        "windows-clang",
+        "vcpkg-x64-windows-static",
+        "cmake"
+      ]
+    },
+    {
+      "name": "Linux-GCC9-x64",
+      "description": "Target Linux using GCC 9, static, CMake, vcpkg.",
+      "generator": "ninja",
+      "inherits": [
+        "linux-gcc",
+        "vcpkg-x64-windows-static",
+        "cmake"
+      ]
+    },
+    {
+      "name": "Linux-Clang14-x64",
+      "description": "Target Linux using Clang 14, static, CMake, vcpkg.",
+      "generator": "ninja",
+      "inherits": [
+        "linux-clang",
+        "vcpkg-x64-windows-static",
+        "cmake"
+      ]
+    },
+    {
+      "name": "Windows-GCC8.1-mingw64",
+      "description": "Target Windows using GCC 8.1 (mingw64), static, CMake, vcpkg.",
+      "generator": "MinGW Makefiles",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "E:\\tools\\mingw64\\bin\\mingw64-gcc.exe",
+        "CMAKE_CXX_COMPILER": "E:\\tools\\mingw64\\bin\\mingw64-g++.exe",
+        "CMT_MINGW_PATH": "E:\\tools\\mingw64\\bin"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "build-preset-windows-generator-msvc",
+      "hidden": true,
+      "description": "Inherits environment from windows-msvc configurePreset.",
+      "configurePreset": "windows-generator-msvc",
+      "inheritConfigureEnvironment": true
+    },
+    {
+      "name": "build-preset-windows-generator-ninja",
+      "hidden": true,
+      "description": "Inherits environment from windows-generator-ninja configurePreset.",
+      "configurePreset": "windows-generator-ninja",
+      "inheritConfigureEnvironment": true
+    },
+    {
+      "name": "build-preset-linux-generator-ninja",
+      "hidden": true,
+      "description": "Inherits environment from linux-generator-ninja configurePreset.",
+      "configurePreset": "linux-generator-ninja"
+    },
+    {
+      "name": "build-preset-linux-generator-makefiles",
+      "hidden": true,
+      "description": "Inherits environment from linux-generator-makefiles configurePreset.",
+      "configurePreset": "linux-generator-makefiles"
+    },
+    {
+      "name": "build-analysis",
+      "hidden": true,
+      "description": "Inherits environment from Windows-VC17-x64-Analysis configurePreset.",
+      "configurePreset": "Windows-VC17-x64-Analysis",
+      "inheritConfigureEnvironment": true
+    },
+    {
+      "name": "build-pch-off",
+      "hidden": true,
+      "description": "Inherits environment from Windows-VC17-x64-PCH-off configurePreset.",
+      "configurePreset": "Windows-VC17-x64-PCH-off",
+      "inheritConfigureEnvironment": true
+    },
+    {
+      "name": "Release",
+      "description": "Build in Release mode.",
+      "configurePreset": "Windows-VC17-x64",
+      "inherits": "build-preset-windows-generator-msvc",
+      "configuration": "Release"
+    },
+    {
+      "name": "RelWithDebInfo",
+      "description": "Build in ReleaseWithDebugInfo mode.",
+      "configurePreset": "Windows-VC17-x64",
+      "inherits": "build-preset-windows-generator-msvc",
+      "configuration": "RelWithDebInfo"
+    },
+    {
+      "name": "Debug",
+      "description": "Build in Debug mode",
+      "configurePreset": "Windows-VC17-x64",
+      "inherits": "build-preset-windows-generator-msvc",
+      "configuration": "Debug"
+    },
+    {
+      "name": "Debug-Analysis",
+      "description": "Build in Debug mode with analysis features enabled (ASAN, etc.).",
+      "configurePreset": "Windows-VC17-x64",
+      "inherits": "build-analysis",
+      "configuration": "Debug"
+    },
+    {
+      "name": "Debug-PCH-OFF",
+      "description": "Build in Debug mode without using precompiled headers (PCH).",
+      "configurePreset": "Windows-VC17-x64",
+      "inherits": "build-pch-off",
+      "configuration": "Debug"
+    },
+    {
+      "name": "Release",
+      "description": "Build in Release mode.",
+      "configurePreset": "ClangCL-x64",
+      "inherits": "build-presets",
+      "configuration": "Release"
+    },
+    {
+      "name": "Debug",
+      "description": "Build in Debug mode",
+      "configurePreset": "ClangCL-x64",
+      "inherits": "build-presets",
+      "configuration": "Debug"
+    },
+    {
+      "name": "Release",
+      "description": "Build in Release mode.",
+      "configurePreset": "Windows-VC17-x64-ninja",
+      "inherits": "build-preset-windows-generator-ninja",
+      "configuration": "Release"
+    },
+    {
+      "name": "Debug",
+      "description": "Build in Debug mode",
+      "configurePreset": "Windows-VC17-x64-ninja",
+      "inherits": "build-preset-windows-generator-ninja",
+      "configuration": "Debug"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "Test",
+      "description": "Test VC17-64 Debug",
+      "configuration": "Debug",
+      "output": {
+        "shortProgress": true
+      },
+      "configurePreset": "Windows-VC17-x64"
+    }
+  ]
+}

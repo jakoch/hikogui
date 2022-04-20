@@ -12,7 +12,6 @@
       "description": "Set the build and install directory.",
       "binaryDir": "${sourceDir}/out/build/${presetName}",
       "cacheVariables": {
-        "FATAL_WARNINGS": "ON",
         "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}"
       }
     },

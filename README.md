@@ -1,5 +1,14 @@
-HikoGUI GUI library [![Build on Windows](https://github.com/hikogui/hikogui/actions/workflows/build-on-windows.yml/badge.svg?branch=main)](https://github.com/hikogui/hikogui/actions/workflows/build-on-windows.yml) [![Version](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/hikogui/hikogui/main/vcpkg.json&label=Latest%20Version&query=$[%27version%27]&color=blue)](https://github.com/hikogui/hikogui/releases/latest) [![License](https://img.shields.io/github/license/hikogui/hikogui.svg)](https://github.com/hikogui/hikogui/blob/main/LICENSE_1_0.txt) [![CodeCov](https://codecov.io/gh/hikogui/hikogui/branch/main/graphs/badge.svg)](https://codecov.io/github/hikogui/hikogui?branch=main)
-==================
+![Logo](https://avatars.githubusercontent.com/u/78804706?s=60&v=4)
+
+# HikoGUI [![Version](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/hikogui/hikogui/main/vcpkg.json&label=Latest%20Version&query=$[%27version%27]&color=blue)](https://github.com/hikogui/hikogui/releases/latest) [![License](https://img.shields.io/github/license/hikogui/hikogui.svg)](https://github.com/hikogui/hikogui/blob/main/LICENSE_1_0.txt)
+
+[Website](https://hikogui.org/) •
+[Documentation](https://hikogui.org/docs/hikogui/main/index.html) •
+[Examples](https://github.com/hikogui/hikogui_hello_world/blob/main/src/main.cpp) •
+[Bugtracker](https://github.com/hikogui/hikogui/issues) •
+[Github](https://github.com/hikogui/hikogui)
+
+[![Build on Windows](https://github.com/hikogui/hikogui/actions/workflows/build-on-windows.yml/badge.svg?branch=main)](https://github.com/hikogui/hikogui/actions/workflows/build-on-windows.yml) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/hikogui/hikogui.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/hikogui/hikogui/context:python) [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/hikogui/hikogui.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/hikogui/hikogui/context:cpp) [![CodeCov](https://codecov.io/gh/hikogui/hikogui/branch/main/graphs/badge.svg)](https://codecov.io/github/hikogui/hikogui?branch=main)
 
 Broken toolchains
 -----------------

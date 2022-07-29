@@ -1,24 +1,12 @@
-![Logo](https://avatars.githubusercontent.com/u/78804706?s=60&v=4)
+<img src="https://avatars.githubusercontent.com/u/78804706?s=80&v=4" alt="Logo" style="max-width:100%; float:left; padding-right: 20px;">
 
-# HikoGUI [![Version](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/hikogui/hikogui/main/vcpkg.json&label=Latest%20Version&query=$[%27version%27]&color=blue)](https://github.com/hikogui/hikogui/releases/latest) [![License](https://img.shields.io/github/license/hikogui/hikogui.svg)](https://github.com/hikogui/hikogui/blob/main/LICENSE_1_0.txt)
+# HikoGUI [![Version][hikogui-latest-version-badge]](hikogui-latest-release) [![License][hikogui-license-badge]](hikogui-license-text)
 
 [Website](https://hikogui.org/) •
 [Documentation](https://hikogui.org/docs/hikogui/main/index.html) •
 [Examples](https://github.com/hikogui/hikogui_hello_world/blob/main/src/main.cpp) •
-[Bugtracker](https://github.com/hikogui/hikogui/issues) •
-[Github](https://github.com/hikogui/hikogui)
-
-[![Build on Windows](https://github.com/hikogui/hikogui/actions/workflows/build-on-windows.yml/badge.svg?branch=main)](https://github.com/hikogui/hikogui/actions/workflows/build-on-windows.yml) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/hikogui/hikogui.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/hikogui/hikogui/context:python) [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/hikogui/hikogui.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/hikogui/hikogui/context:cpp) [![CodeCov](https://codecov.io/gh/hikogui/hikogui/branch/main/graphs/badge.svg)](https://codecov.io/github/hikogui/hikogui?branch=main)
-
-Broken toolchains
------------------
-### Currently C++20 vcpkg builds are broken
-
-Due to future changes to the C++20 standard involving ABI changes in
-std::format and std::ranges there are some issues with compatibility
-between compiler and cmake versions. Please use the non-vcpkg builds
-which ensures that cmake and compiler versions are exactly the same.
-
+[Bug tracker](https://github.com/hikogui/hikogui/issues) •
+[Git repository](https://github.com/hikogui/hikogui)
 
 A portable, low latency, retained-mode GUI framework written in C++
 -------------------------------------------------------------------
@@ -30,10 +18,28 @@ It is specifically designed to display information with low-latency,
 and at the screen's refresh rate. Special care is taken for making
 it easy for GUI element to observe and modify data external to the GUI.
 
-You can find a lot more information,
+You can find more information,
 [documentation](https://hikogui.org/docs/hikogui/main/index.html),
 [example code](https://github.com/hikogui/hikogui_hello_world/blob/main/src/main.cpp),
 news and blog posts on the main web site: <https://hikogui.org/>
+
+Build Status
+------------
+
+| Platform | Compiler |     Build   | Coverage |
+|:--------:|:--------:|:-----------:|:--------:|
+| Windows  | MSVC17 | [![Build on Windows][hikogui-ci-badge-main]](hikogui-wf-build-on-windows) | [![codecov.io Code Coverage][hikogui-codecov-badge-main]](hikogui-codecov-main)
+| Linux    |  | *platform not supported, yet*
+| MacOS    |  | *platform not supported, yet*
+
+HikoGUI makes use of bleeding edge C++20 language features.
+
+It will compile on Windows using MSVC 17 (VS2022).
+
+Other compilers, including Clang-14 and GCC-12, are still missing these new
+C++20 language features and are currently unable to compile HikoGUI.
+
+Referencing: [C++ Compiler Support][cpp-compiler-support].
 
 Features
 --------
@@ -114,3 +120,27 @@ _There are currently no platinum sponsors._
 
 for more sponsors please see [SPONSORS](SPONSORS.md).
 
+<!-- Section for Reference Links -->
+
+[hikogui-latest-version-badge]:
+https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/hikogui/hikogui/main/vcpkg.json&label=Latest%20Version&query=$[%27version%27]&color=blue
+[hikogui-latest-release]:
+https://github.com/hikogui/hikogui/releases/latest
+
+[hikogui-license-badge]:
+https://img.shields.io/github/license/hikogui/hikogui.svg
+[hikogui-license-text]:
+https://github.com/hikogui/hikogui/blob/main/LICENSE_1_0.txt
+
+[hikogui-ci-badge-main]:
+https://github.com/hikogui/hikogui/actions/workflows/build-on-windows.yml/badge.svg?branch=main
+[hikogui-wf-build-on-windows]:
+https://github.com/hikogui/hikogui/actions/workflows/build-on-windows.yml
+
+[hikogui-codecov-badge-main]:
+https://img.shields.io/codecov/c/github/hikogui/hikogui.svg
+[hikogui-codecov-main]:
+https://codecov.io/github/hikogui/hikogui?branch=main
+
+[cpp-compiler-support]:
+https://en.cppreference.com/w/cpp/compiler_support

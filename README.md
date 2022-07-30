@@ -1,6 +1,15 @@
-<img src="https://avatars.githubusercontent.com/u/78804706?s=80&v=4" alt="Logo" style="max-width:100%; float:left; padding-right: 20px;">
+<img align="left" alt="Logo" style="max-width:100%; margin-right: 10px;" src="https://avatars.githubusercontent.com/u/78804706?s=100&v=4"/>
 
-# HikoGUI [![Version][hikogui-latest-version-badge]](hikogui-latest-release) [![License][hikogui-license-badge]](hikogui-license-text)
+<a href="https://github.com/hikogui/hikogui/blob/main/LICENSE_1_0.txt">
+<img align="right" style="margin: 5px" src="https://img.shields.io/github/license/hikogui/hikogui.svg"/>
+</a>
+<a href="https://github.com/hikogui/hikogui/releases/latest">
+<img align="right" style="margin: 5px" src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/hikogui/hikogui/main/vcpkg.json&label=Latest%20Version&query=$[%27version%27]&color=blue"/>
+</a>
+
+&nbsp;
+
+# HikoGUI: a modern accelerated GUI
 
 [Website](https://hikogui.org/) •
 [Documentation](https://hikogui.org/docs/hikogui/main/index.html) •
@@ -22,24 +31,6 @@ You can find more information,
 [documentation](https://hikogui.org/docs/hikogui/main/index.html),
 [example code](https://github.com/hikogui/hikogui_hello_world/blob/main/src/main.cpp),
 news and blog posts on the main web site: <https://hikogui.org/>
-
-Build Status
-------------
-
-| Platform | Compiler |     Build   | Coverage |
-|:--------:|:--------:|:-----------:|:--------:|
-| Windows  | MSVC17 | [![Build on Windows][hikogui-ci-badge-main]](hikogui-wf-build-on-windows) | [![codecov.io Code Coverage][hikogui-codecov-badge-main]](hikogui-codecov-main)
-| Linux    |  | *platform not supported, yet*
-| MacOS    |  | *platform not supported, yet*
-
-HikoGUI makes use of bleeding edge C++20 language features.
-
-It will compile on Windows using MSVC 17 (VS2022).
-
-Other compilers, including Clang-14 and GCC-12, are still missing these new
-C++20 language features and are currently unable to compile HikoGUI.
-
-Referencing: [C++ Compiler Support][cpp-compiler-support].
 
 Features
 --------
@@ -91,12 +82,22 @@ int hi_main(int argc, char *argv[])
 }
 ```
 
-Platform support
+Platform Support
 ----------------
 
-The following platforms are supported:
+| Platform |  Architectures  | Compiler | Version |   Build    | Coverage |
+|:--------:|:---------------:|:--------:|:-------:|:----------:|:--------:|
+| Windows 10 | x86-64-v2.5 | MSVC       | VC17 (VS2022) | [![Build on Windows][hikogui-ci-badge-main]](hikogui-wf-build-on-windows) | [![codecov.io Code Coverage][hikogui-codecov-badge-main]](hikogui-codecov-main) |
+| Linux      | x64         | GCC, Clang | *platform not supported, yet* |
+| MacOS 11   | ARM64       | AppleClang | *platform not supported, yet* |
 
- - MSVC - Windows 10 - x64
+HikoGUI makes use of bleeding edge C++20 language features.
+
+It will compile on Windows 10 x64 using MSVC 17 (VS2022).
+
+Other compilers, including Clang-14 and GCC-12, are still missing these new C++20 language features and are currently unable to compile HikoGUI.
+
+Referencing: [C++ Compiler Support][cpp-compiler-support].
 
 For hardware support see: [hardware\_support](docs/hardware_support.md)
 

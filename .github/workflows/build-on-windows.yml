@@ -27,8 +27,10 @@ jobs:
       fail-fast: false
       matrix:
         config:
-            - { NAME: "Release", PRESET: "vc17-x64-windows-static-rel-ci" }
-            - { NAME: "Debug",   PRESET: "vc17-x64-windows-static-dbg-ci" }
+            #- { NAME: "Release VC17", PRESET: "vc17-x64-windows-static-rel-ci" }
+            #- { NAME: "Debug   VC17", PRESET: "vc17-x64-windows-static-dbg-ci" }
+            - { NAME: "Debug MSYS mingw", PRESET: "msys-x64-windows-static-dbg-ci", MSYSTEM: "mingw64" }
+            - { NAME: "Debug MSYS clang", PRESET: "msys-x64-windows-static-dbg-ci", MSYSTEM: "clang64" }
 
     env:
       PLATFORM: x64
@@ -108,7 +110,21 @@ jobs:
           dir ${{steps.vulkan-version.outputs.VULKAN_SDK}}\runtime\${{env.PLATFORM}}
 
       - name: 🛠️ Setup Visual Studio Developer Command Prompt
+        if: contains(matrix.config.PRESET, 'vc17')
         uses: ilammy/msvc-dev-cmd@v1
+
+      - name: 🛠️ Setup MSYS2
+        if: contains(matrix.config.PRESET, 'msys')
+        uses: msys2/setup-msys2@v2 # https://github.com/msys2/setup-msys2
+        with:
+          path-type: inherit
+          msystem: clang64
+          release: false
+          update: true
+          install: >-
+            mingw-w64-clang-x86_64-winpthreads-git
+            mingw-w64-clang-x86_64-clang
+            mingw-w64-clang-x86_64-gcc
 
       - name: ✏ CMake ➔ Configure
         run: cmake --preset=${{matrix.config.PRESET}}

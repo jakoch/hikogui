@@ -141,7 +141,20 @@
                 "CMAKE_C_COMPILER_LAUNCHER": "sccache",
                 "CMAKE_CXX_COMPILER_LAUNCHER": "sccache"
             }
+        },
+        {
+          "name": "msys-x64-windows-static-dbg-ci",
+          "description": "ZZ MSYS-x64-Debug (for CI)",
+          "binaryDir": "build",
+          "generator": "MSYS Makefiles",
+          "cacheVariables": {
+            "CMAKE_VERBOSE_MAKEFILE": "ON",
+            "CMAKE_INSTALL_PREFIX": "install",
+            "CMAKE_BUILD_TYPE": "Debug",
+            "BUILD_SHARED_LIBS": "OFF"
+          }
         }
+
     ],
     "buildPresets": [
         {
